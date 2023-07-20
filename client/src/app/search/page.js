@@ -2,6 +2,7 @@
 import React from "react";
 import { Container, Box, Typography, Button, TextField } from "@mui/material";
 import { useState } from "react";
+import Navbar from "../layout/Navbar";
 
 const Search = () => {
   const [search , setSearch] = useState()
@@ -13,6 +14,7 @@ const Search = () => {
   }
   return (
     <>  
+      <div><Navbar/></div>
       <Container sx={{ maxWidth: "100%" }}>
         <Box
           sx={{
@@ -25,9 +27,13 @@ const Search = () => {
           <Typography component="h1" variant="h5">
             Search products
           </Typography>
-          <Box component="form" onSubmit={""} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
-              color="secondary"
+              inputProps={{
+                style: {
+                  color: 'white'
+                }
+              }}
               margin="normal"
               required
               fullWidth
