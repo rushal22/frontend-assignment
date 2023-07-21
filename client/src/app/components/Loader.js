@@ -11,7 +11,10 @@ const Loader = () => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      bgcolor={"Highlight"}
+      sx={{
+        backgroundColor: "white",
+        color: "white", 
+      }}
     >
       <Image
         priority = "high"

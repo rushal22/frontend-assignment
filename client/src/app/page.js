@@ -1,5 +1,6 @@
 "use client";
 import Home from "./Home/page";
+import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 
 export default function App() {
@@ -7,6 +8,8 @@ export default function App() {
     <div>
       <Navbar />
       <Home />
+      <Footer/>
+      
     </div>
   );
 }

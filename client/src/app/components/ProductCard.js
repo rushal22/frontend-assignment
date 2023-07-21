@@ -18,13 +18,15 @@ const ProductCard = ({ product }) => {
         <Grid item key={product.id * 10}>
           <Card
             title={product?.category}
+            
             sx={{
-              height: "100%",
+              height: "96%",
               display: "flex",
               flexDirection: "column",
-              width: "300px",
+              width: "290px",
               padding: "5px",
               cursor: "pointer",
+              bgcolor: "lavenderblush"
             }}
             onClick={() => router.push(`/productdetail`)}
           >
@@ -32,7 +34,7 @@ const ProductCard = ({ product }) => {
               component="img"
               image={product?.image}
               alt={product?.title}
-              height={200}
+              height={300}
               sx={{
                 padding: "5px", 
               }}
@@ -55,10 +57,10 @@ const ProductCard = ({ product }) => {
                 gap={1}
                 paddingTop={"20px"}
               >
-                <Typography variant="h5" color={"orange"}>
-                  Rs. {product?.price}
+                <Typography variant="h5" color={"rebeccapurple"}>
+                  $ {product?.price}
                 </Typography>
-                <Typography variant="h7" display={"flex"} alignItems={"center"}>
+                <Typography variant="h6" display={"flex"} alignItems={"center"}>
                   <Rating
                     name="half-rating"
                     defaultValue={product?.rating?.rate}

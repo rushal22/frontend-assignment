@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import {
-  Container,
   Box,
   Typography,
   Button,
@@ -12,7 +11,8 @@ import { useState } from "react";
 import Navbar from "../layout/Navbar";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../components/ProductCard";
-
+import SearchIcon from "@mui/icons-material/ImageSearchSharp"
+import Typewriter from "typewriter-effect";
 const Search = () => {
   const [search, setSearch] = useState();
   const [products, setProducts] = useState(null);
@@ -44,7 +44,8 @@ const Search = () => {
   return (
     <>
       <Navbar />
-      <Grid width={"80%"} margin={"auto"}>
+      <Box height={"100vh"} bgcolor={"goldenrod"}>
+      <Grid width={"80%"} margin={"auto"} bgcolor={"goldenrod"}>
         <Box
           sx={{
             marginTop: 8,
@@ -53,8 +54,18 @@ const Search = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5">
-            Search products
+          <Typography fontFamily={"fantasy"}
+          color={"palegoldenrod"} textAlign={"center"} py={5} variant="h4">
+            <Box>
+      <Typewriter
+         options={{
+          strings: ['Search for the Product', 'Here!☺'],
+          autoStart: true,
+          loop: true,  
+        }}
+        
+      />
+    </Box>
           </Typography>
           <Box
             component="form"
@@ -65,7 +76,7 @@ const Search = () => {
             <TextField
               inputProps={{
                 style: {
-                  color: "white",
+                  color: "black",
                 },
               }}
               margin="normal"
@@ -80,10 +91,11 @@ const Search = () => {
               onInput={(e) => setSearch(e.target.value)}
             />
             <Button
+
               type="submit"
-              fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              style={{fontSize:"20px" , width: "200px"}}
+              startIcon={<SearchIcon />}
             >
               Search
             </Button>
@@ -105,6 +117,7 @@ const Search = () => {
           </Box>
         </Box>
       </Grid>
+      </Box>
     </>
   );
 };
