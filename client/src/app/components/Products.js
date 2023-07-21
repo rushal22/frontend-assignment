@@ -43,7 +43,7 @@ const Products = () => {
                           router.push(`/productdetail`)
                         }
                         sx={{
-                          // 16:9
+                          position: "relative",
                           pt: "56.25%",
                           cursor: "pointer",
                         }}

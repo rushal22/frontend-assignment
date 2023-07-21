@@ -31,44 +31,6 @@ const Navbar = () => {
                 Search
               </MenuItem>
             </Link>
-
-            {/* <Link style={{ color: "Black", textDecoration: "inherit" }} to="/">
-              {" "}
-             
-            </Link> */}
-
-            {/* <nav
-              style={{
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <Link
-                style={{ color: "inherit", textDecoration: "inherit" }}
-                to="/search"
-              >
-                {" "}
-                <MenuItem style={{ paddingLeft: 20 }}>Search Product</MenuItem>
-              </Link>
-              <Link
-                style={{ color: "inherit", textDecoration: "inherit" }}
-                to="/cart"
-              >
-                <MenuItem style={{ paddingLeft: 20 }}> Cart</MenuItem>
-              </Link>
-              <Link
-                style={{ color: "inherit", textDecoration: "inherit" }}
-                to="/profile"
-              >
-                <MenuItem style={{ paddingLeft: 20 }}> Profile</MenuItem>
-              </Link>
-              <Link
-                style={{ color: "inherit", textDecoration: "inherit" }}
-                to="/trackorder"
-              >
-                <MenuItem style={{ paddingLeft: 20 }}> Track Order</MenuItem>
-              </Link>
-            </nav> */}
           </Toolbar>
         </AppBar>
       </Box>

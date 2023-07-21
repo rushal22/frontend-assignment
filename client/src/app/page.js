@@ -1,17 +1,12 @@
-"use client"
-import Navbar from './layout/Navbar'
-import Products from './components/Products'
-import { QueryClientProvider ,QueryClient } from '@tanstack/react-query'
+"use client";
+import Home from "./Home/page";
+import Navbar from "./layout/Navbar";
 
-export default function Home() {
-
-  const client = new QueryClient();
+export default function App() {
   return (
     <div>
-      <Navbar/>
-       <QueryClientProvider client={client}>
-      <Products />
-    </QueryClientProvider>
-      </div>
-  )
+      <Navbar />
+      <Home />
+    </div>
+  );
 }
