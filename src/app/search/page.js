@@ -13,6 +13,9 @@ import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../components/ProductCard";
 import SearchIcon from "@mui/icons-material/ImageSearchSharp"
 import Typewriter from "typewriter-effect";
+
+
+
 const Search = () => {
   const [search, setSearch] = useState();
   const [products, setProducts] = useState(null);
