@@ -5,101 +5,152 @@ import {
   Grid,
   Typography,
   Box,
-  Button
+  Button,
+  CardMedia,
+  Card,
+  Rating,
 } from "@mui/material";
+import Navbar from "../layout/Navbar";
+import Image from "next/image";
 
 const Productdetails = () => {
   const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const id = searchParams.get("productId");
   const [productDetail, setProductDetail] = useState(null);
   const [submitMsg, setSubmitMsg] = useState({});
   const [submitMsgStyle, setSubmitMsgStyle] = useState({
     display: "none",
   });
-  
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch("https://fakestoreapi.com/products/");
+        const res = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await res.json();
-        data.forEach((product) => {
-          console.log(product.id);
-        });
+        console.log(data);
         setProductDetail(data);
       } catch (error) {
         console.error("Error fetching product details:", error);
       }
     };
     fetchProduct();
-  }, []);
+  }, [id]);
   return (
     <>
-     <Box>
-        <Box
-          sx={{
-            top: "0",
-            marginTop: "-10px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Box sx={submitMsgStyle}>
-            <Typography>{submitMsg.msg}</Typography>
-          </Box>
-        </Box>
-        </Box>
-        <Box>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Navbar />
+
+      {productDetail && (
+        <>
+          <Box sx={{ display: "flex", width: "100%", bgcolor: "white" }}>
+            <Grid container spacing={2}>
+            <Grid item xs = {12} sm = {12} md = {6} lg = {6} >
               <Box
                 sx={{
-                  background: "red",
-                  padding: "4px 7px",
-                  borderRadius: "50%",
-                  color: "white",
-                  position: "absolute",
-                  top: "0",
+                  height: "91vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#DADDE1",
                 }}
               >
-                {/* {userCart.noOfProducts} */}
+                <Box
+                  sx={{ height: "600px", width: "400px", position: "relative" }}
+                >
+                  <Image
+                    src={productDetail?.image}
+                    alt={productDetail?.title}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </Box>
               </Box>
-            </Box>   
-        </Box>
-        <Grid container key={id}>
-          <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
-            <Box sx={{}}>
-              <img src={productDetail?.image} alt="Product" />
+            </Grid>
+            
+            <Grid item xs = {12} sm = {12} md = {6} lg = {6}>
+            <Box
+              sx={{
+                height: "91vh",
+                backgroundColor: "white",
+                padding: "48px 0px 0px 56px",
+              }}
+            >
+              <Box>
+                <Typography
+                  sx={{ fontWeight: "bold", fontSize: "24px" }}
+                  color={"#BBBABB"}
+                >
+                  {productDetail?.category}
+                </Typography>
+              </Box>
+              <Box sx={{ padding: "32px 0px" }}>
+                <Typography
+                  style={{ fontWeight: "bold", fontSize: "24px" }}
+                  color={"black"}
+                >
+                  {productDetail?.title}
+                </Typography>
+              </Box>
+              <Box sx={{ width: "80%" }}>
+                <Typography sx={{ color: "#505051", fontSize: "20px" }}>
+                  {productDetail?.description}
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  color: "#666766",
+                  display: "flex",
+                  gap: 3,
+                  padding: "32px 0px",
+                }}
+              >
+                <Rating
+                  name="half-rating"
+                  readOnly
+                  defaultValue={productDetail?.rating?.rate}
+                  precision={0.5}
+                />
+                <Typography>
+                  {productDetail?.rating?.rate} ({productDetail?.rating?.count}{" "}
+                  reviews)
+                </Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ color: "#F57220", fontWeight: "bold" }}>
+                  Price: $ {productDetail?.price}
+                </Typography>
+              </Box>
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "space-around",
-                  margin: "20px 0",
+                  justifyContent: "space-between",
+                  width: "50%",
+                  flexWrap: "wrap",
+                  gap: 3,
+                  padding: "40px 0px 0px 0px",
                 }}
               >
-                <Button variant="contained"> {`<<`} </Button>
-                <Button variant="contained"> {`>> `}</Button>
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    alert(`${productDetail?.title} added to cart successfully`)
+                  }
+                >
+                  Add to Cart
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => alert(`redirecting to checkout`)}
+                  color="success"
+                >
+                  Buy now
+                </Button>
               </Box>
             </Box>
-          </Grid>
-          </Grid>
-      <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
-        <Grid container>
-          <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography variant="h2">{productDetail?.title}</Typography>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography>Category: {productDetail?.category} </Typography>
-              <Typography>Price: $ {productDetail?.price}</Typography>
-              <Typography>Rating: {productDetail?.rating}</Typography>
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography variant="p">
-                Description: {productDetail?.description}
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Grid>
+            </Grid>
+            </Grid>
+          </Box>
+        </>
+      )}
     </>
   );
 };

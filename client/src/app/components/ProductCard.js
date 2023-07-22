@@ -9,13 +9,16 @@ import {
   Card,
   Rating,
 } from "@mui/material";
-
+import Link from "next/link";
 const ProductCard = ({ product }) => {
   const router = useRouter();
   return (
     <>
       {product && (
         <Grid item key={product.id * 10}>
+           <Link
+                href={{ pathname: "/productdetail", query: { productId: product.id } }}
+              >
           <Card
             title={product?.category}
             
@@ -24,11 +27,10 @@ const ProductCard = ({ product }) => {
               display: "flex",
               flexDirection: "column",
               width: "290px",
-              padding: "5px",
+              padding: "10px",
               cursor: "pointer",
               bgcolor: "lavenderblush"
             }}
-            onClick={() => router.push(`/productdetail`)}
           >
             <CardMedia
               component="img"
@@ -36,13 +38,15 @@ const ProductCard = ({ product }) => {
               alt={product?.title}
               height={300}
               sx={{
-                padding: "5px", 
+                padding: "10px", 
               }}
             />
             <CardContent sx={{ flexGrow: 1 }}>
+              <Box sx={{height:"70px" , width: "100%" , display:"flex" , flexWrap: "wrap" , overflow: "hidden"}} aria-level={product?.title}>
               <Typography gutterBottom variant="h6">
                 {product?.title}
               </Typography>
+              </Box>
               <Typography
                 variant="h5"
                 fontWeight={"bold"}
@@ -55,7 +59,6 @@ const ProductCard = ({ product }) => {
                 display={"flex"}
                 flexDirection={"column"}
                 gap={1}
-                paddingTop={"20px"}
               >
                 <Typography variant="h5" color={"rebeccapurple"}>
                   $ {product?.price}
@@ -71,6 +74,7 @@ const ProductCard = ({ product }) => {
               </Box>
             </CardContent>
           </Card>
+          </Link>
         </Grid>
       )}
     </>

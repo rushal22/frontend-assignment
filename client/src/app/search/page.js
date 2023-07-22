@@ -44,8 +44,8 @@ const Search = () => {
   return (
     <>
       <Navbar />
-      <Box height={"100vh"} bgcolor={"goldenrod"}>
-      <Grid width={"80%"} margin={"auto"} bgcolor={"goldenrod"}>
+      <Box height={"100vh"}  bgcolor={"white"}>
+      <Grid width={"100%"}  bgcolor={"white"}>
         <Box
           sx={{
             marginTop: 8,
@@ -55,11 +55,11 @@ const Search = () => {
           }}
         >
           <Typography fontFamily={"fantasy"}
-          color={"palegoldenrod"} textAlign={"center"} py={5} variant="h4">
-            <Box>
+          color={"ThreeDLightShadow"} textAlign={"center"} py={5} variant="h4">
+            <Box padding={"50px"}>
       <Typewriter
          options={{
-          strings: ['Search for the Product', 'Here!☺'],
+          strings: ['Get Your Product', 'Here!☺'],
           autoStart: true,
           loop: true,  
         }}
@@ -70,7 +70,7 @@ const Search = () => {
           <Box
             component="form"
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: -1  }}
             onSubmit={handleSearch}
           >
             <TextField
@@ -80,6 +80,7 @@ const Search = () => {
                 },
               }}
               margin="normal"
+              color="success"
               required
               fullWidth
               id="search"
@@ -91,10 +92,9 @@ const Search = () => {
               onInput={(e) => setSearch(e.target.value)}
             />
             <Button
-
               type="submit"
               variant="contained"
-              style={{fontSize:"20px" , width: "200px"}}
+              style={{fontSize:"20px" , width: "150px"}}
               startIcon={<SearchIcon />}
             >
               Search
@@ -102,6 +102,7 @@ const Search = () => {
           </Box>
           <Box
             sx={{
+              paddingBottom:"30px",
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",

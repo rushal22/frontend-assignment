@@ -19,7 +19,7 @@ const Home = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Box bgcolor={"goldenrod"}>
+        <Box bgcolor={"dimgray"}>
         <Grid
           fontSize={"8vh"}
           fontFamily={"fantasy"}

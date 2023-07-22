@@ -11,14 +11,11 @@ const Loader = () => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{
-        backgroundColor: "white",
-        color: "white", 
-      }}
+      
     >
       <Image
         priority = "high"
-        src={"/images/loading.gif"}
+        src={"/images/loading1.gif"}
         alt={"loader"}
         width={500}
         height={400}
