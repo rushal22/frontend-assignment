@@ -16,10 +16,11 @@ const Footer = () => {
         py: 3,
         px: 3,
         mt: 'auto',
+        bgcolor: "grey",
       }}
     >
       <Container maxWidth="lg">
-      <Typography textAlign="center" variant="h5" color={"white"}>
+      <Typography textAlign="center" variant="h5" color={"ThreeDLightShadow"}>
              Connect With Support
             </Typography>
         <Box display="flex" alignItems="center" justifyContent="center" flexWrap="wrap">
@@ -34,7 +35,7 @@ const Footer = () => {
             </IconButton>
           </Box>
         </Box>
-        <Typography variant="body1" color="white" align="center">
+        <Typography variant="body1" color="black" align="center">
           {'Copyright © All rights reserved '}
           {' '}
           {new Date().getFullYear()}
